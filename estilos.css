@@ -1,0 +1,200 @@
+ body{
+  background-color: #00346b !important;
+ }
+ #modelito{
+  margin-bottom: 20px;
+ }
+ .modal-big{
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+ }
+ .modal-short {
+  //background-color: blue;
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1800px;
+  overflow: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(229,229,229,0.5);
+}
+
+.mySlides {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.active,
+.mySlides:hover {
+  opacity: 1;
+}
+
+div.mySlides{
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+div.mySlides img{
+  max-height: 100px;
+}
+
+div.imageG{
+  display: block;
+  text-align: center;
+  height: 70vh;
+}
+div.imageG img{
+  max-height: 500px;
+  max-width: 80vh;
+  cursor: zoom-in;
+}
+
+.modal-short::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  -webkit-appearance: none;
+}
+.modal-short::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #EAEAEA;
+}
+.modal-short::-webkit-scrollbar-thumb:hover {
+  border-radius: 10px;
+  background-color: #FFF;
+}
+.modal-short::-webkit-scrollbar-track-piece{
+  background-color: rgba(229,229,229,0.5);
+  border-radius: 10px;
+}
+
+@media screen and (max-height: 800px){
+  div.mySlides > img {
+    max-height: 80px !important;
+  }
+  .imageG > img {
+    max-height: 450px !important;
+  }
+}
+
+@media screen and (max-height: 500px){
+  div.mySlides > img {
+    max-height: 50px !important;
+  }
+  div.mySlides {
+    margin: 0 !important;
+  }
+  #modelito{
+    margin-bottom: 0 !important;
+  }
+  .imageG > img {
+    max-height: 300px !important;
+  }
+}
+
+/*-------- Ampliación de imagenes en modal-box ---------------*/
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  /*max-width: 700px;*/
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.3s;
+  animation-name: zoom;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #bbb;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.2s;
+  opacity: .7;
+}
+
+.close:hover,
+.close:focus {
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}

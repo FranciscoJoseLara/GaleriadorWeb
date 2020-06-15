@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <LINK REL=StyleSheet HREF="estilos.css" TYPE="text/css">
+    <title>Galería UMA</title>
+</head>
+<body>
+    <div id="modelito" class="modal-short"></div>
+    <div id="modeloG" class="modal-big">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" id="CreatedByFrancisco" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <!-- Ampliar -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+  <script>
+    var t = new Array();
+    var divSli = new Array();
+    var fotito = new Array();
+    //fotito = ['clima2_G.png', 'ISV_1.png', 'footer_1.JPG'];
+    
+    fotito = ["fotocbf1.JPG", "fotocbf2.JPG", "fotocbf3.png"];
+
+    fotitomrg = ["fotocbf1_mrg.JPG", "fotocbf2_mrg.JPG", "fotocbf3_mrg.png"];
+
+    fotitomr = ["fotocbf1_mr.JPG", "fotocbf2_mr.JPG", "fotocbf3_mr.png"];
+
+    for (var i = 0; i < fotito.length; i++){
+      divSli[i] = document.createElement("div");
+      divSli[i].className = "mySlides";
+      divSli[i].innerHTML = "<img src=mr/" + fotitomr[i] + " " + "onclick=" + "currentSlide(" + (i+1) + ")" + ">";
+      document.getElementById("modelito").appendChild(divSli[i]);
+    }
+
+    var divFlin = new Array();
+    for (var i = 0; i < fotito.length; i++){
+      divFlin[i] = document.createElement("div");
+      divFlin[i].className = "imageG";
+      divFlin[i].innerHTML = "<img src=mrg/" + fotitomrg[i] + " onclick=" + "ampliar(this.src)" + ">";
+      document.getElementById("modeloG").appendChild(divFlin[i]);
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    var ant = 0;
+    function showSlides(n) {
+      var i;
+      var cajonera = document.getElementById("modelito");
+      var slides = document.getElementsByClassName("imageG");
+      var dots = document.getElementsByClassName("mySlides");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      //dots[slideIndex-1].scrollIntoView({behavior: 'smooth', inline: 'center'});
+  	  //================= DESLIZAMIENTO AUTOMATICO DE LA CAJONERA
+  	  indice = ant + 1;
+  	  if (dots[slideIndex-1].offsetLeft > window.innerWidth/2){
+  	  	cajonera.scrollLeft = (dots[slideIndex-1].offsetLeft - (window.innerWidth/2.5));
+  	  } else if ((indice - slides.length) > 0){
+  	  	cajonera.scrollLeft = -dots[slideIndex-1].offsetLeft;
+  	  } else if (dots[slideIndex-1].offsetLeft < window.innerWidth/2){
+  	  	cajonera.scrollLeft = -dots[slideIndex-1].offsetLeft;
+  	  }
+  	  ant = slideIndex;
+  	  //===========================================================
+    }
+
+    // Modal-box
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    function ampliar(ruta){
+      modal.style.display = "block";
+      var ni = ruta.indexOf("/mrg/");
+      var nf = ruta.indexOf("/foto");
+      var cortoini = ruta.slice(0, ni);
+      var cortofin = ruta.slice(nf);
+      var newruta = cortoini + cortofin;
+      ni = newruta.indexOf("_mrg");
+      nf = ni + 4;
+      cortoini = newruta.slice(0, ni);
+      cortofin = newruta.slice(nf);
+      newruta = cortoini + cortofin;
+      modalImg.src = newruta;
+    }
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() { 
+      modal.style.display = "none";
+    }
+
+  </script>
+</body>
+</html>

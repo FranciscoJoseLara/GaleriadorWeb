@@ -1,0 +1,13 @@
+#selector div{
+    padding: 20px;
+}
+
+#selector div:hover{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+}
+
+#selector img:hover{
+    transform: scale(0.9);
+}
