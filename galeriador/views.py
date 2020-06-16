@@ -1,16 +1,52 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.core.files.storage import FileSystemStorage
 from django import forms
 import os, sys
 import shutil
 from PIL import Image
 
-def force(request):
+def home(request):
+    '''
+    context = ({
+        'path': ruta, 
+        'listado': contenido,
+        'p1': ruta,
+        'p2': contenido
+        })
+    '''
+    return render(request, 'home.html' , context={})
 
+    #return HttpResponse("Hola mundo, estoy vivo")
+
+def paso1(request):
+    if request.method == 'POST':
+        eleccion = request.POST.get('interfaz')
+        files = request.FILES.getlist('imagen')
+        for f in files:
+            fs = FileSystemStorage()
+            fs.save(f.name, f)
+
+        context = ({'data': eleccion})
+        return render(request, 'carga.html', context=context)
+    else:
+        return Httpresponse('No Ok!')
+
+def paso2(request):
+    if request.method == 'POST':
+        eleccion = request.POST.get('interfaz')
+        #color = form['interfaz'].value()
+        context = ({'dato': eleccion})
+        #arranca(eleccion)
+        return render(request, 'prueba.html', context=context)
+    else:
+        return Httpresponse('No Ok!')
+
+def arranca(eleccion):
     #--------------------------------- CODIGO DE EJECUCION ---------------------------------------------------
     ruta = os.getcwd()
     contenido = os.listdir(ruta)
-    '''
+    
     cont = 0
     imagenes = []
     imagenesmrg = []
@@ -129,22 +165,3 @@ def force(request):
         copiar = directorio + '/estilos.css'
         shutil.copy('estilos.css', copiar)
     #--------------------------------------------------------------------------------------------------------
-    '''
-    context = ({
-        'path': ruta, 
-        'listado': contenido,
-        'p1': ruta,
-        'p2': contenido
-        })
-
-    return render(request, 'layout.html', context=context)
-
-    #return HttpResponse("Hola mundo, estoy vivo")
-def ejecutor(request):
-    if request.method == 'POST':
-        form = request.POST.get('interfaz')
-        #color = form['interfaz'].value()
-        context = ({'dato': form})
-        return render(request, 'prueba.html', context=context)
-    else:
-        return Httpresponse('No Ok!')

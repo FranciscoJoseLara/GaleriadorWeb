@@ -12,28 +12,18 @@
         margin: 0;
       }
     </style>
-
   </head>
   <body>
-    <h1 style="text-align: center; padding: 10px; background-color: slateblue; color: white;">¡Galeriador UMA!</h1>
-    <div class="row">
-        <div class="col-xs-12 col-md-8"></div>
-        <div class="col-xs-6 col-md-4"></div>
-      </div>
-      <div class="row">
-        <div class="col-xs-6 col-md-4"></div>
-        <div class="col-xs-6 col-md-4" style="text-align: center; height: 20vh; 
-                    border: slateblue solid 5px; border-radius: 10px; ">Deja tus imágenes aquí
-                    <br><br><button style="background-color: cyan; width: 150px;
-                    padding: 7px; border-radius: 10px; border: solid slateblue 5px;">Subir</button></div>
-        <div class="col-xs-6 col-md-4"></div>
-      </div>
+      <h2>
+          {{data}}
+      </h2>
+
       <div class="row" id="formulario" style="margin-top: 10px;">
         <div class="col-xs-6 col-md-2"></div>
         <div class="col-xs-6 col-md-8" style="text-align: center;
                     border: slateblue solid 5px; border-radius: 10px; 
                     padding: 5px;">
-                    <form action="/ejecutor/" method="post">
+                    <form action="/constructor/" method="post">
                       {% csrf_token %}
                       <p><h4>Interfaz clara u oscura:</h4><br>
                         <!-- <label for="interfaz"></label> -->
@@ -55,22 +45,5 @@
                   </div>
         <div class="col-xs-6 col-md-2"></div>
       </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-8"></div>
-        <div class="col-xs-6 col-md-4"></div>
-      </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col-xs-6 col-md-4"></div>
-        <div class="col-xs-6 col-md-4" style="text-align: center; 
-                    border: slateblue solid 5px; border-radius: 10px; "><h3>Pruebas</h3>
-                    <p>
-                      <strong>Prueba 1:</strong><br>{{p1}}
-                    </p>
-                    <p>
-                      <strong>Prueba 2:</strong><br>{{p2}}
-                    </p>
-          </div>
-        <div class="col-xs-6 col-md-4"></div>
-      </div>
+
   </body>
-</html>

@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from galeriador.views import force, ejecutor
+from galeriador.views import home, paso1, paso2
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('saludo/', saludo),
-    path(r'', force), # <--------------------------- Enlazamos a nuestros templates (HTML)
-    path('ejecutor/', ejecutor),
+    path(r'', home), # <--------------------------- Enlazamos a nuestros templates (HTML)
+    path('eleccion/', paso1),
+    path('constructor/', paso2),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

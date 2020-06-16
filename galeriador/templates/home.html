@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/faceapp.css' %}">
+    <style type="text/css">
+      .row{
+        margin: 0;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1 style="text-align: center; padding: 10px; background-color: slateblue; color: white;">¡Galeriador UMA!</h1>
+    <div class="row">
+        <div class="col-xs-12 col-md-8"></div>
+        <div class="col-xs-6 col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-4"></div>
+        <div class="col-xs-6 col-md-4" style="text-align: center; 
+                    border: slateblue solid 5px; border-radius: 10px; ">Deja tus imágenes aquí
+                    <br><br>
+                    <form action="/eleccion/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="imagen" multiple><br><br>
+                    <button type="submit" style="background-color: cyan; width: 150px;
+                    padding: 7px; border-radius: 10px; border: solid slateblue 5px;">Subir imagenes</button>
+                    </form>
+                    <br>
+        </div>
+        <div class="col-xs-6 col-md-4"></div>
+      </div>
+      <div class="row" id="formulario" style="margin-top: 10px;">
+        <div class="col-xs-6 col-md-2"></div>
+        <div class="col-xs-6 col-md-8" style="text-align: center;
+                    border: slateblue solid 5px; border-radius: 10px; 
+                    padding: 5px;">
+                    <form action="/eleccion/" method="post">
+                      {% csrf_token %}
+                      <p><h4>Interfaz clara u oscura:</h4><br>
+                        <!-- <label for="interfaz"></label> -->
+                        <div class="row" id="selector">
+                        <div class="col-xs-6 col-md-6">
+                        <label for="interfaz1" style="cursor: pointer;"><img src="{% static 'images/clara.jpg' %}" alt="clara" width="150vw"></label><br>
+                        <input id="interfaz1" type="radio" name="interfaz" value="clara" required> 
+                        <label for="interfaz1" style="cursor: pointer;">Clara</label>
+                        </div>
+                        <div class="col-xs-6 col-md-6">
+                        <label for="interfaz2" style="cursor: pointer;"><img src="{% static 'images/oscura.jpg' %}" alt="oscura" width="150vw"></label><br>
+                        <input id="interfaz2" type="radio" name="interfaz" value="oscura" required>
+                        <label for="interfaz2" style="cursor: pointer;">Oscura</label>
+                        </div>
+                        </div>
+                      </p>
+                      <input type="submit" value="Generar">
+                    </form>  
+                  </div>
+        <div class="col-xs-6 col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-8"></div>
+        <div class="col-xs-6 col-md-4"></div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-xs-6 col-md-4"></div>
+        <div class="col-xs-6 col-md-4" style="text-align: center; 
+                    border: slateblue solid 5px; border-radius: 10px; "><h3>Pruebas</h3>
+                    <p>
+                      <strong>Prueba 1:</strong><br>{{p1}}
+                    </p>
+                    <p>
+                      <strong>Prueba 2:</strong><br>{{p2}}
+                    </p>
+          </div>
+        <div class="col-xs-6 col-md-4"></div>
+      </div>
+  </body>
+</html>
