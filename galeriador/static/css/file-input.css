@@ -1,0 +1,234 @@
+/**********File Inputs**********/
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.iborrainputfile {
+	font-size:14px; 
+	font-weight: bolder;
+	/* font-family: 'Lato'; */
+}
+
+/* style 1 */
+
+.inputfile-1 + label {
+    color: #000;
+    border: solid slateblue 3px;
+    border-radius: 5px;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* style 2 */
+
+.inputfile-2 + label {
+    color: #ec9b1b;
+    border: 2px solid currentColor;
+}
+
+.inputfile-2:focus + label,
+.inputfile-2.has-focus + label,
+.inputfile-2 + label:hover {
+    color: #d47e03;
+}
+
+/* style 3 */
+
+.inputfile-3 + label {
+    color: #ccc;
+}
+
+.inputfile-3:focus + label,
+.inputfile-3.has-focus + label,
+.inputfile-3 + label:hover {
+    color: #ec9b1b;
+}
+
+/* style 4 */
+
+.inputfile-4 + label {
+    color: #ccc;
+}
+
+.inputfile-4:focus + label,
+.inputfile-4.has-focus + label,
+.inputfile-4 + label:hover {
+    color: #ec9b1b;
+}
+
+/* style 5 */
+
+.inputfile-5 + label {
+    color: #ec9b1b;
+}
+
+.inputfile-5:focus + label,
+.inputfile-5.has-focus + label,
+.inputfile-5 + label:hover {
+    color: #d47e03;
+}
+
+.inputfile-5 + label figure {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ec9b1b;
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+}
+
+.inputfile-5:focus + label figure,
+.inputfile-5.has-focus + label figure,
+.inputfile-5 + label:hover figure {
+    background-color: #d47e03;
+}
+
+.inputfile-5 + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #f1e5e6;
+}
+
+/* style 6 */
+
+.inputfile-6 + label {
+    color: #ec9b1b;
+}
+
+.inputfile-6:focus + label,
+.inputfile-6.has-focus + label,
+.inputfile-6 + label:hover {
+    color: #d47e03;
+}
+
+.inputfile-6 + label figure {
+    width: 100px;
+    height: 135px;
+    background-color: #ec9b1b;
+    display: block;
+    position: relative;
+    padding: 30px;
+    margin: 0 auto 10px;
+}
+
+.inputfile-6:focus + label figure,
+.inputfile-6.has-focus + label figure,
+.inputfile-6 + label:hover figure {
+    background-color: #d47e03;
+}
+
+.inputfile-6 + label figure::before,
+.inputfile-6 + label figure::after {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.inputfile-6 + label figure::before {
+    border-top: 20px solid #05354e;
+    border-left: 20px solid transparent;
+}
+
+.inputfile-6 + label figure::after {
+    border-bottom: 20px solid #d47e03;
+    border-right: 20px solid transparent;
+}
+
+.inputfile-6:focus + label figure::after,
+.inputfile-6.has-focus + label figure::after,
+.inputfile-6 + label:hover figure::after {
+    border-bottom-color: #ec9b1b;
+}
+
+.inputfile-6 + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #f1e5e6;
+}
+
+/* style 7 */
+
+.inputfile-7 + label {
+    color: #ec9b1b;
+}
+
+.inputfile-7 + label {
+    border: 1px solid #ec9b1b;
+    background-color: #fff;
+    padding: 0;
+}
+
+.inputfile-7:focus + label,
+.inputfile-7.has-focus + label,
+.inputfile-7 + label:hover {
+    border-color: #d47e03;
+}
+
+.inputfile-7 + label span,
+.inputfile-7 + label strong {
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile-7 + label span {
+    width: 200px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.inputfile-7 + label strong {
+    height: 100%;
+    color: #fff;
+    background-color: #ec9b1b;
+    display: inline-block;
+}
+
+.inputfile-7:focus + label strong,
+.inputfile-7.has-focus + label strong,
+.inputfile-7 + label:hover strong {
+    background-color: #d47e03;
+}
+
+@media screen and (max-width: 50em) {
+	.inputfile-7 + label strong {
+		display: block;
+	}
+}
+/**********End File Inputs**********/

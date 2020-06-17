@@ -11,3 +11,34 @@
 #selector img:hover{
     transform: scale(0.9);
 }
+
+label{ 
+    font-size: 16px;
+}
+
+h4{
+    font-weight: bolder;
+    font-size: 16px;
+    color: #003366;
+    padding-bottom: 10px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.col-md-8, .col-md-4{
+    padding: 0;
+}
+
+.send-button{
+    color: #000;
+    border: solid slateblue 3px;
+    border-radius: 5px;
+    font-size:14px; 
+    font-weight: bolder;
+    background-color: white;
+    height: 40px;
+    width: 100px;
+}
+
+.send-button:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
