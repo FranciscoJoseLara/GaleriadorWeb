@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería UMA</title>
+    <style type="text/css">
+       body{
+        background-color: #00346b !important;
+       }
+       #modelito{
+        margin-bottom: 20px;
+       }
+       .modal-big{
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+       }
+       .modal-short {
+        //background-color: blue;
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1800px;
+        overflow: auto;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(229,229,229,0.5);
+      }
+
+      .mySlides {
+        opacity: 0.6;
+        cursor: pointer;
+      }
+      .active,
+      .mySlides:hover {
+        opacity: 1;
+      }
+
+      div.mySlides{
+        display: inline-block;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      div.mySlides img{
+        max-height: 100px;
+      }
+
+      div.imageG{
+        display: block;
+        text-align: center;
+        height: 70vh;
+      }
+      div.imageG img{
+        max-height: 500px;
+        max-width: 80vh;
+        cursor: zoom-in;
+      }
+
+      .modal-short::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        -webkit-appearance: none;
+      }
+      .modal-short::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #EAEAEA;
+      }
+      .modal-short::-webkit-scrollbar-thumb:hover {
+        border-radius: 10px;
+        background-color: #FFF;
+      }
+      .modal-short::-webkit-scrollbar-track-piece{
+        background-color: rgba(229,229,229,0.5);
+        border-radius: 10px;
+      }
+
+      @media screen and (max-height: 800px){
+        div.mySlides > img {
+          max-height: 80px !important;
+        }
+        .imageG > img {
+          max-height: 450px !important;
+        }
+      }
+
+      @media screen and (max-height: 500px){
+        div.mySlides > img {
+          max-height: 50px !important;
+        }
+        div.mySlides {
+          margin: 0 !important;
+        }
+        #modelito{
+          margin-bottom: 0 !important;
+        }
+        .imageG > img {
+          max-height: 300px !important;
+        }
+      }
+
+      /*-------- Ampliación de imagenes en modal-box ---------------*/
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        /*max-width: 700px;*/
+      }
+
+      /* Caption of Modal Image */
+      #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      /* Add Animation */
+      .modal-content, #caption {  
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.3s;
+        animation-name: zoom;
+        animation-duration: 0.3s;
+      }
+
+      @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)} 
+        to {-webkit-transform:scale(1)}
+      }
+
+      @keyframes zoom {
+        from {transform:scale(0)} 
+        to {transform:scale(1)}
+      }
+
+      /* The Close Button */
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #bbb;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.2s;
+        opacity: .7;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #FFF;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 1;
+      }
+    </style>
+</head>
+<body>
+    <div id="modelito" class="modal-short"></div>
+    <div id="modeloG" class="modal-big">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" id="CreatedByFrancisco" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <!-- Ampliar -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+  <script>
+    var t = new Array();
+    var divSli = new Array();
+    var fotito = new Array();
+    //fotito = ['clima2_G.png', 'ISV_1.png', 'footer_1.JPG'];
+    
+    //MARCADOR
+
+    //mrgMARCADOR
+
+    //mrMARCADOR
+
+    for (var i = 0; i < fotito.length; i++){
+      divSli[i] = document.createElement("div");
+      divSli[i].className = "mySlides";
+      divSli[i].innerHTML = "<img src=mr/" + fotitomr[i] + " " + "onclick=" + "currentSlide(" + (i+1) + ")" + ">";
+      document.getElementById("modelito").appendChild(divSli[i]);
+    }
+
+    var divFlin = new Array();
+    for (var i = 0; i < fotito.length; i++){
+      divFlin[i] = document.createElement("div");
+      divFlin[i].className = "imageG";
+      divFlin[i].innerHTML = "<img src=mrg/" + fotitomrg[i] + " onclick=" + "ampliar(this.src)" + ">";
+      document.getElementById("modeloG").appendChild(divFlin[i]);
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    var ant = 0;
+    function showSlides(n) {
+      var i;
+      var cajonera = document.getElementById("modelito");
+      var slides = document.getElementsByClassName("imageG");
+      var dots = document.getElementsByClassName("mySlides");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      //dots[slideIndex-1].scrollIntoView({behavior: 'smooth', inline: 'center'});
+  	  //================= DESLIZAMIENTO AUTOMATICO DE LA CAJONERA
+  	  indice = ant + 1;
+  	  if (dots[slideIndex-1].offsetLeft > window.innerWidth/2){
+  	  	cajonera.scrollLeft = (dots[slideIndex-1].offsetLeft - (window.innerWidth/2.5));
+  	  } else if ((indice - slides.length) > 0){
+  	  	cajonera.scrollLeft = -dots[slideIndex-1].offsetLeft;
+  	  } else if (dots[slideIndex-1].offsetLeft < window.innerWidth/2){
+  	  	cajonera.scrollLeft = -dots[slideIndex-1].offsetLeft;
+  	  }
+  	  ant = slideIndex;
+  	  //===========================================================
+    }
+
+    // Modal-box
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    function ampliar(ruta){
+      modal.style.display = "block";
+      var ni = ruta.indexOf("/mrg/");
+      var nf = ruta.indexOf("/foto");
+      var cortoini = ruta.slice(0, ni);
+      var cortofin = ruta.slice(nf);
+      var newruta = cortoini + cortofin;
+      ni = newruta.indexOf("_mrg");
+      nf = ni + 4;
+      cortoini = newruta.slice(0, ni);
+      cortofin = newruta.slice(nf);
+      newruta = cortoini + cortofin;
+      modalImg.src = newruta;
+    }
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() { 
+      modal.style.display = "none";
+    }
+
+  </script>
+</body>
+</html>

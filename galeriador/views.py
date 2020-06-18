@@ -7,52 +7,38 @@ import shutil
 from PIL import Image
 
 def home(request):
-    '''
-    context = ({
-        'path': ruta, 
-        'listado': contenido,
-        'p1': ruta,
-        'p2': contenido
-        })
-    '''
     return render(request, 'home.html' , context={})
 
-    #return HttpResponse("Hola mundo, estoy vivo")
-
-def paso1(request):
+def constructor(request):
     if request.method == 'POST':
         eleccion = request.POST.get('interfaz')
         files = request.FILES.getlist('imagen')
         for f in files:
             fs = FileSystemStorage()
             fs.save(f.name, f)
-
-        context = ({'data': eleccion})
-        return render(request, 'carga.html', context=context)
-    else:
-        return Httpresponse('No Ok!')
-
-def paso2(request):
-    if request.method == 'POST':
-        eleccion = request.POST.get('interfaz')
-        #color = form['interfaz'].value()
-        context = ({'dato': eleccion})
-        #arranca(eleccion)
+        enlace = arranca(eleccion)
+        context = ({
+        'path': enlace,
+        'data': eleccion
+        })
         return render(request, 'prueba.html', context=context)
     else:
-        return Httpresponse('No Ok!')
+        return Httpresponse('ERROR!')
 
 def arranca(eleccion):
     #--------------------------------- CODIGO DE EJECUCION ---------------------------------------------------
     ruta = os.getcwd()
-    contenido = os.listdir(ruta)
+    #ruta = ruta + '\media'
+    workpath = ruta + '\media'
+    os.chdir(workpath) # <------------------ Change the current working directory to the specified path.
+    contenido = os.listdir(workpath)
     
     cont = 0
     imagenes = []
     imagenesmrg = []
     imagenesmr = []
     for fichero in contenido:
-        if os.path.isfile(os.path.join(ruta, fichero)) and (fichero.endswith('.jpg') or fichero.endswith('.JPG')
+        if os.path.isfile(os.path.join(workpath, fichero)) and (fichero.endswith('.jpg') or fichero.endswith('.JPG')
                 or fichero.endswith('.png') or fichero.endswith('.PNG')
                 or fichero.endswith('.gif') or fichero.endswith('.GIF')
                 or fichero.endswith('.jpeg') or fichero.endswith('.JPEG')
@@ -97,7 +83,7 @@ def arranca(eleccion):
         start = 0
         # comprobacion del fichero de registro de los directorios de alojamiento de las galerias
         for fichero in contenido:
-            if os.path.isfile(os.path.join(ruta, fichero)) and fichero == 'directorios':
+            if os.path.isfile(os.path.join(workpath, fichero)) and fichero == 'directorios':
                 start = 1
 
         if start == 0:                  # si es la primera, se crea el archivo de registro
@@ -121,7 +107,13 @@ def arranca(eleccion):
         os.mkdir(directorio)
 
         # preparacion del archivo html
-        with open('album.html','r', encoding='utf-8') as f:
+
+        if eleccion == 'clara':
+            doc_html = 'uma\\album_claro.html'
+        elif eleccion == 'oscura':
+            doc_html = 'uma\\album_oscuro.html'
+        
+        with open(doc_html,'r', encoding='utf-8') as f:
             lecturaAlbum = f.read()
 
         lista = ''
@@ -162,6 +154,10 @@ def arranca(eleccion):
             shutil.move(i, dirmr)
 
         shutil.move('galeriauma.html', directorio)
-        copiar = directorio + '/estilos.css'
-        shutil.copy('estilos.css', copiar)
+        rb = 'C:/proyectosdjango/galeriador/media/'
+        enlace = rb + directorio + '/galeriauma.html'
+
+    os.chdir(ruta)
+
+    return enlace
     #--------------------------------------------------------------------------------------------------------
