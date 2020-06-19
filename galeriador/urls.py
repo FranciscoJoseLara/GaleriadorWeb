@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', home), # <--------------------------- Enlazamos a nuestros templates (HTML)
-    path('next/', constructor),
+    path('end/', constructor),
 ]
 
 if settings.DEBUG:

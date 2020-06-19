@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/faceapp.css' %}">
+    <style type="text/css">
+      .row{
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; padding: 10px; background-color: slateblue; color: white;">¡Galeriador UMA!</h1>
+
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-xs-6 col-md-2"></div>
+        <div class="col-xs-6 col-md-8" style="text-align: center;
+                    border: slateblue solid 5px; border-radius: 10px;">
+                    <h4 style="padding-top: 5px;">Enlace a su galería:</h4>
+                    <p id="enlace">{{path}}</p>
+                    <button class="copy-button" onclick="copiarAlPortapapeles('enlace')">Copiar enlace</button>
+                    <p></p>
+                    <p id="iframe">{{iframe}}</p>
+                    <button class="copy-button" onclick="copiarAlPortapapeles('iframe')">Copiar iframe</button>
+                    <p></p>
+                  </div>
+        <div class="col-xs-6 col-md-2"></div>
+      </div>
+      <script charset="utf-8">
+        function copiarAlPortapapeles(id_elemento) {
+          var aux = document.createElement("input");
+          window.alert("¡Copiado!");
+          aux.setAttribute("value", document.getElementById(id_elemento).textContent);
+          document.body.appendChild(aux);
+          aux.select();
+          document.execCommand("copy");
+          document.body.removeChild(aux);
+        }
+      </script>
+  </body>

@@ -38,7 +38,38 @@ h4{
     height: 40px;
     width: 100px;
 }
-
 .send-button:hover{
     background-color: rgba(0, 0, 0, 0.05);
 }
+
+.copy-button{
+    color: #000;
+    border: solid slateblue 3px;
+    border-radius: 5px;
+    font-size:14px; 
+    font-weight: bolder;
+    background-color: white;
+}
+.copy-button:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#iframe, #enlace{
+    overflow: auto;
+    margin: 20px;
+    color: slateblue;
+}
+
+#iframe::-webkit-scrollbar, #enlace::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    -webkit-appearance: none;
+  }
+  #iframe::-webkit-scrollbar-thumb, #enlace::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: slateblue;
+  }
+  #iframe::-webkit-scrollbar-track-piece, #enlace::-webkit-scrollbar-track-piece{
+    background-color: rgba(229,229,229,0.5);
+    border-radius: 10px;
+  }

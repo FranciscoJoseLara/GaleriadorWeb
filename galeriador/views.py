@@ -17,18 +17,19 @@ def constructor(request):
             fs = FileSystemStorage()
             fs.save(f.name, f)
         enlace = arranca(eleccion)
+        iframe = '<iframe width="600" height="400" src="' + enlace + '" frameborder="0"></iframe>'
         context = ({
         'path': enlace,
+        'iframe': iframe,
         'data': eleccion
         })
-        return render(request, 'prueba.html', context=context)
+        return render(request, 'end.html', context=context)
     else:
         return Httpresponse('ERROR!')
 
 def arranca(eleccion):
     #--------------------------------- CODIGO DE EJECUCION ---------------------------------------------------
     ruta = os.getcwd()
-    #ruta = ruta + '\media'
     workpath = ruta + '\media'
     os.chdir(workpath) # <------------------ Change the current working directory to the specified path.
     contenido = os.listdir(workpath)
@@ -154,7 +155,7 @@ def arranca(eleccion):
             shutil.move(i, dirmr)
 
         shutil.move('galeriauma.html', directorio)
-        rb = 'C:/proyectosdjango/galeriador/media/'
+        rb = 'C:/proyectosdjango/galeriador/media/'  # <------------ ruta en servidor de produccion
         enlace = rb + directorio + '/galeriauma.html'
 
     os.chdir(ruta)

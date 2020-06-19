@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,20 +26,14 @@
         <div class="col-xs-6 col-md-4" style="text-align: center; 
                     border: slateblue solid 5px; border-radius: 10px; "><h4 style="padding-top: 5px;">Deja tus imágenes aquí</h4>
                     <br>
-                    <form action="/next/" method="POST" enctype="multipart/form-data">
+                    <form action="/end/" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <!-- <input type="file" name="imagen" class="input-file" multiple> -->
-
                     <input type="file" name="imagen" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
                     <label for="file-1">
                     <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
                     <span class="iborrainputfile">Seleccionar imagenes</span>
                     </label>
-
                   <br>
-                    <!-- <button type="submit" style="background-color: cyan; width: 150px;
-                    padding: 7px; border-radius: 10px; border: solid slateblue 5px;">Subir imagenes</button> -->
-                    <!-- </form> -->
                     <br>
         </div>
         <div class="col-xs-6 col-md-4"></div>
@@ -48,10 +42,7 @@
         <div class="col-xs-6 col-md-2"></div>
         <div class="col-xs-6 col-md-8" style="text-align: center;
                     border: slateblue solid 5px; border-radius: 10px;">
-                    <!-- <form action="/eleccion/" method="post"> -->
-                      <!-- {% csrf_token %} -->
-                      <!-- <p> --><h4 style="padding-top: 5px;">Interfaz de la galería</h4><br>
-                        <!-- <label for="interfaz"></label> -->
+                      <h4 style="padding-top: 5px;">Interfaz de la galería</h4><br>
                         <div class="row" id="selector">
                         <div class="col-xs-6 col-md-6">
                         <label for="interfaz1" style="cursor: pointer;"><img src="{% static 'images/clara.jpg' %}" alt="clara" width="150vw"></label><br>
@@ -64,7 +55,6 @@
                         <label for="interfaz2" style="cursor: pointer;">Oscura</label>
                         </div>
                         </div>
-                      <!-- </p> -->
                       <p></p>
                       <input type="submit" value="Generar" class="send-button">
                       <p></p>
