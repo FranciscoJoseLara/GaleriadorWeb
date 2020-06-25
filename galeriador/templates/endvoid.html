@@ -19,19 +19,11 @@
         <div class="col-xs-6 col-md-2"></div>
         <div class="col-xs-6 col-md-8" style="text-align: center;
                     border: slateblue solid 5px; border-radius: 10px;">
-                    <h4 style="padding-top: 5px;">Enlace a su galería:</h4>
-                    <p id="enlace">{{path}}</p>
-                    <button class="copy-button" onclick="copiarAlPortapapeles('enlace')">Copiar enlace</button>
-                    <p></p>
-                    <p id="iframe">{{iframe}}</p>
-                    <button class="copy-button" onclick="copiarAlPortapapeles('iframe')">Copiar iframe</button>
+                    <h4 style="padding-top: 5px;">{{path}}</h4>
+                    <button class="copy-button"><a href="http://localhost:8000/" style="text-decoration:none; color: black">← Volver</a></button>
                     <p></p>
                   </div>
         <div class="col-xs-6 col-md-2"></div>
-      </div>
-      <p></p>
-      <div >
-        <button class="copy-button" style="position:relative; margin: -20px -50px; width:100px; top:50%; left:50%;"><a href="http://localhost:8000/" style="text-decoration:none; color: black">← Volver</a></button>
       </div>
 
       <br>
@@ -50,15 +42,4 @@
           </div>
       </footer>
 
-      <script charset="utf-8">
-        function copiarAlPortapapeles(id_elemento) {
-          var aux = document.createElement("input");
-          window.alert("¡Copiado!");
-          aux.setAttribute("value", document.getElementById(id_elemento).textContent);
-          document.body.appendChild(aux);
-          aux.select();
-          document.execCommand("copy");
-          document.body.removeChild(aux);
-        }
-      </script>
   </body>

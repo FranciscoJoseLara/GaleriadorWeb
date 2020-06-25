@@ -17,13 +17,18 @@ def constructor(request):
             fs = FileSystemStorage()
             fs.save(f.name, f)
         enlace = arranca(eleccion)
-        iframe = '<iframe width="600" height="400" src="' + enlace + '" frameborder="0"></iframe>'
-        context = ({
-        'path': enlace,
-        'iframe': iframe,
-        'data': eleccion
-        })
-        return render(request, 'end.html', context=context)
+        if enlace == "V":
+            enlace = "¿Se le pudo olvidar seleccionar las imágenes para su galería? Por favor, vuelva a intentarlo"
+            context = ({'path': enlace})
+            return render(request, 'endvoid.html', context=context)
+        else:
+            iframe = '<iframe width="600" height="400" src="' + enlace + '" frameborder="0"></iframe>'
+            context = ({
+            'path': enlace,
+            'iframe': iframe,
+            'data': eleccion
+            })
+            return render(request, 'end.html', context=context)
     else:
         return Httpresponse('ERROR!')
 
@@ -79,7 +84,7 @@ def arranca(eleccion):
             image.close()
 
     if cont == 0:                       # comprobamos si hay imagenes cargadas
-        print('Se le pudo olvidar cargar las imagenes? Por favor, compruebelo y vuelva a ejecutar el script.')
+        enlace = "V"
     else:                               # si han cargado las imagenes, continua el proceso de creacion de la galeria
         start = 0
         # comprobacion del fichero de registro de los directorios de alojamiento de las galerias
