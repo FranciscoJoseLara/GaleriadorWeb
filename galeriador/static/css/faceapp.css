@@ -30,7 +30,7 @@ h4{
 
 .send-button{
     color: #000;
-    border: solid slateblue 3px;
+    border: solid #00346b 3px;
     border-radius: 5px;
     font-size:14px; 
     font-weight: bolder;
@@ -44,7 +44,7 @@ h4{
 
 .copy-button{
     color: #000;
-    border: solid slateblue 3px;
+    border: solid #00346b 3px;
     border-radius: 5px;
     font-size:14px; 
     font-weight: bolder;
@@ -67,7 +67,7 @@ h4{
   }
   #iframe::-webkit-scrollbar-thumb, #enlace::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: slateblue;
+    background-color: #00346b;
   }
   #iframe::-webkit-scrollbar-track-piece, #enlace::-webkit-scrollbar-track-piece{
     background-color: rgba(229,229,229,0.5);
